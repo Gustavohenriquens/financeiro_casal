@@ -1,0 +1,23 @@
+{
+  "name": "financias-controle",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,green \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w client",
+    "start": "npm run start -w server",
+    "seed": "npm run seed -w server",
+    "vercel-build": "npm run build -w client && npm run migrate -w server",
+    "migrate": "npm run migrate -w server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  }
+}
